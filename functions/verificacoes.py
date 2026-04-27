@@ -2,11 +2,6 @@
 # Crie uma função para verificar se houve um empate.
 # Crie uma função para verificar se uma jogada é válida.
 
-tabuleiro = [
-    [" ", "O", "X"], # Apenas uma variável de teste pras funções, 
-    ["X", "O", "O"],
-    ["X", "X", "X"]]
-
 def verificarVencedor(tabuleiro): # Puxa a variavel do tabuleiro como parametro e faz quatro verficações 
     for linha in tabuleiro: # aq verifica se as linhas são iguais e não estão vazias
         if linha[0] == linha[1] == linha[2] and linha[0] != " ":
@@ -25,10 +20,12 @@ def verificarVencedor(tabuleiro): # Puxa a variavel do tabuleiro como parametro 
     return None # e aqui caso não houver vitória, não retorna nada
 
 def verificarEmpate(tabuleiro): # aq eu fiz a função puxar a verificação de vitória e caso não retornar nada então consequentemente será empate
+    for linha in tabuleiro:
+        for elemento in linha:
+            if elemento == " ":
+                return False
     if verificarVencedor(tabuleiro) == None:
         return True
-    else:
-        return False
     
 def verificarJogada(tabuleiro, posx, posy): # Aq eu usei um valor de X e Y q o jogador deverá usar para selecionar a jogada, e caso o espaço for vazio retorna verdadeiro
     if tabuleiro[posx][posy] != " ":
@@ -36,5 +33,3 @@ def verificarJogada(tabuleiro, posx, posy): # Aq eu usei um valor de X e Y q o j
     else:
         return True
     
-# Apenas um teste para todas as funções
-print(f"Vencedor: {verificarVencedor(tabuleiro)}\nEmpate: {verificarEmpate(tabuleiro)}\nPermissão de jogada: {verificarJogada(tabuleiro, 0, 0)}")
