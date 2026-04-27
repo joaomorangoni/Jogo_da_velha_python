@@ -11,9 +11,18 @@ tabuleiro = [[" ", " ", " "],
 
 while jogo_ativo:
     exibir_tabuleiro(tabuleiro)
-
-    posX = int(input(f"jogador {jogador}, escolha posição horizontal: ")) - 1#pro jogador escolher a posição dele
-    posY = int(input(f"jogador {jogador}, escolha posição vertical: ")) - 1
+    try:
+        posX = int(input(f"jogador {jogador}, escolha posição horizontal de 1 a 3: ")) - 1#pro jogador escolher a posição dele
+        posY = int(input(f"jogador {jogador}, escolha posição vertical: ")) - 1
+        if posX < 0 or posX > 2:
+            print("escolha apenas números de 1 a 3")
+            continue
+        if posY < 0 or posY > 2:
+            print("escolha apenas números de 1 a 3")
+            continue
+    except ValueError:
+        print("não é um número válido, tenta de novo")
+        continue 
 
     if verificarJogada(tabuleiro, posX, posY):     #vai verificar se a jogada vai ser valida, caso o campo esteja ou nao preenchido
         tabuleiro[posX][posY] = jogador
@@ -36,3 +45,4 @@ while jogo_ativo:
 
     else:
         print("jogada invalida")
+
