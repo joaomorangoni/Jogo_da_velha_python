@@ -10,7 +10,7 @@ tabuleiro = [[" ", " ", " "],
              [" ", " ", " "]]
 
 while jogo_ativo:
-    exibir_tabuleiro(tabuleiro)
+    exibir_tabuleiro(tabuleiro) #usei o try pra nao dar erro na hora da escolha
     try:
         posX = int(input(f"jogador {jogador}, escolha posição horizontal de 1 a 3: ")) - 1#pro jogador escolher a posição dele
         posY = int(input(f"jogador {jogador}, escolha posição vertical: ")) - 1
